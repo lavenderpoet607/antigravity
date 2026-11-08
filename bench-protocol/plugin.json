@@ -1,0 +1,24 @@
+{
+  "name": "bench-protocol",
+  "displayName": "Bench Protocol",
+  "version": "1.0.0",
+  "description": "Task-first agent protocol: three limits (no recap, no persona talk, no safety preamble), reason-first tool calls, and a slash command for every step of the workflow.",
+  "logo": "assets/logo.svg",
+  "suggestedPrompts": [
+    "/bench audit this project and tell me what to fix first",
+    "/bench-opener for the task I am about to start",
+    "/bench-doctor check my setup"
+  ],
+  "author": {
+    "name": "Kade",
+    "url": "https://github.com/kade"
+  },
+  "keywords": [
+    "protocol",
+    "agent",
+    "task-first",
+    "rules",
+    "workflow"
+  ],
+  "license": "MIT"
+}
