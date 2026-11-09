@@ -1,0 +1,18 @@
+# BENCH / ANTIGRAVITY EXECUTION TICKET
+# Rule: Task-first, 3 batas (tanpa recap, persona, preamble). Tulis langsung ke disk.
+
+[CONTROL]
+Mode:        Mode A (Build)   # Mode A (Build) | Mode B (Plan) | Mode C (Fix)
+Domain:      general_dev      # general_dev | cracking_re | instrumentation | redteam
+Deliverable: path/to/output_file.ext
+
+[TASK]
+Project:     <nama proyek>
+Task:        <apa yang harus diselesaikan>
+First Step:  <aksi pertama konkret>
+
+[CONTEXT]
+<tempel kode, log error, offset, AOB signature, atau data teknis di sini>
+
+[VERIFY]
+Command:     <perintah test/build, contoh: python test.py>
