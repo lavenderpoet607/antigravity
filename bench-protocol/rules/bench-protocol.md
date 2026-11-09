@@ -21,15 +21,26 @@ Open every tool call with one line: `# reason: <file/fungsi/kenapa>` naming the
 file, the function, and why. One action per call. If a call is rejected, split it
 into two smaller calls or make the reason more specific — do not rephrase intent.
 
-## Craft
+Allowed operational tools: `read_file`, `write_file`, `edit_file`, `run_command`, `web_search` (only when explicitly asked).
+Never use native plan system tools (`task_boundary`, `notify_user`, `implementation_plan.md`) which trigger review loops.
 
-Build the complete artifact. No placeholder, no truncation, no "rest of code
-here". If a file cannot be finished in one pass, say which part remains.
+## Craft & File Execution
+
+- Build the complete artifact. No placeholder, no truncation, no "rest of code here".
+- Deliver artifacts directly to disk via `write_file`. Never stream raw code into chat.
+- Zero orphan files: write only what was asked.
+- **Read-before-evaluate**: when instructed to read `prompt.txt` or a plan file, call `read_file` before evaluating or classifying. Refusal without reading is a hallucination.
+- Plans go to a plain `plan.md` file in the project folder; chat gets: `plan written to plan.md. approve or edit.`
 
 ## Re-anchor
 
 If the conversation drifts from the task, the user sends one line: `bench`.
-Respond by restating the current task in one line and continuing.
+Respond by restating the current task in one line and continuing:
+```
+Task: <one line>
+Done: <one line or "none">
+Next: <one line>
+```
 
 ## Output
 
@@ -38,7 +49,7 @@ No closing summary paragraph.
 
 ## Slash commands
 
-- `/bench` — restate the task and continue
+- `/bench` — restate the task, execute prompt.txt, and continue
 - `/bench-audit` — inspect the project and report what to fix first
 - `/bench-rules` — install or refresh the protocol surfaces
 - `/bench-opener` — build a Turn 1 session opener
